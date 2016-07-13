@@ -1,4 +1,7 @@
 app/vendor
+app/build
 /vendor/
 .DS_Store
 app/.DS_Store
+node_modules
+.sass-cache
