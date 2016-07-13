@@ -1,0 +1,22 @@
+{
+  "name": "reactiveRoom",
+  "homepage": "https://github.com/parallel-universe/reactiveRoom",
+  "authors": [
+    "Matt Arnold <matthew.arnold@basekit.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone.marionette": "2.4.7",
+    "bottlejs": "^1.3.0"
+  }
+}
