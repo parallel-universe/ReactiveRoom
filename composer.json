@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {"ReactiveRoom\\": "src/"}
+    },
+    "require": {
+        "silex/silex": "~1.3"
+    }
+}
