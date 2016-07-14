@@ -13,6 +13,18 @@ php composer-setup.php --install-dir=/path/to/reactive-room
 php composer.phar install
 ```
 
+Create a config file:
+
+```
+cp config.json.dist config.json
+```
+
+Prepare your database:
+
+```
+php bin/database migrations:status
+```
+
 ## Usage
 
 Run the app:

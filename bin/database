@@ -1,0 +1,59 @@
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use Doctrine\DBAL\DriverManager;
+use Doctrine\DBAL\Migrations\OutputWriter;
+use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\ConsoleEvents;
+use Symfony\Component\Console\Helper\DialogHelper;
+use Symfony\Component\Console\Helper\HelperSet;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+
+$config = file_get_contents('config.json');
+$config = json_decode($config, true);
+$connectionParams = array(
+    'user' => $config['database']['user'],
+    'password' => $config['database']['password'],
+    'host' => $config['database']['host'],
+    'driver' => 'pdo_mysql',
+);
+$conn = DriverManager::getConnection($connectionParams);
+
+$dbName = $config['database']['name'];
+$conn->executeUpdate('CREATE DATABASE IF NOT EXISTS `' . $dbName . '` DEFAULT CHARSET utf8mb4 COLLATE = utf8mb4_unicode_ci');
+$conn->executeUpdate('USE ' . $dbName);
+
+$helperSet = new HelperSet(array(
+    'db' => new ConnectionHelper($conn),
+    'dialog' => new DialogHelper,
+));
+
+$cli = new Application('ReactiveRoom database');
+$cli->setCatchExceptions(true);
+$cli->setHelperSet($helperSet);
+$cli->addCommands(array(
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\ExecuteCommand(),
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\MigrateCommand(),
+    new \Doctrine\DBAL\Migrations\Tools\Console\Command\StatusCommand(),
+));
+
+$eventDispatcher = new EventDispatcher;
+$eventDispatcher->addListener(ConsoleEvents::COMMAND, function ($event) use ($conn) {
+    $command = $event->getCommand();
+    if (false === strpos($command->getName(), 'migrations')) {
+        return;
+    }
+    $output = $event->getOutput();
+    $outputWriter = new OutputWriter(function($message) use ($output) {
+        return $output->writeln($message);
+    });
+    $configuration = new Doctrine\DBAL\Migrations\Configuration\Configuration($conn, $outputWriter);
+    $configuration->setMigrationsNamespace('ReactiveRooms\DatabaseMigrations');
+    $configuration->setMigrationsDirectory(__DIR__ . '/../src/DatabaseMigrations');
+    $configuration->registerMigrationsFromDirectory(__DIR__ . '/../src/DatabaseMigrations');
+    $command->setMigrationConfiguration($configuration);
+});
+$cli->setDispatcher($eventDispatcher);
+
+$cli->run();
