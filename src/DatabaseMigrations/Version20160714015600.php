@@ -73,6 +73,9 @@ CREATE TABLE `terminal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8
 SQL;
         $this->addSql($sql);
+
+        $sql = 'INSERT INTO user (`id`, `username`, `email`) VALUES ("6hKWplv05zVGyCp", "cunt", "matt@basekit.com");';
+        $this->addSql($sql);
     }
 
     public function down(Schema $schema)
