@@ -4,24 +4,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    babel: {
-      options: {
-        sourceMap: true
-      },
-      dist: {
-        files: [{
-            expand: true,
-            cwd: 'app',
-            src: [
-              'entities/**/*.js',
-              'ui/**/*.js',
-              'events/**/*.js'
-            ],
-            dest: 'app/build',
-            ext: '.js'
-        }]
-      }
-    },
     sass: {
       dist: {
         options: {
@@ -41,9 +23,6 @@ module.exports = function(grunt) {
   });
 
   // Default task(s).
-  grunt.registerTask("default", ["babel"]);
-  grunt.registerTask("build", [
-    "babel",
-    "sass"
-    ]);
+  grunt.registerTask("default", ["sass"]);
+  grunt.registerTask("build", ["sass"]);
 };
