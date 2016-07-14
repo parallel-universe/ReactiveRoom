@@ -14,7 +14,8 @@ module.exports = function(grunt) {
             cwd: 'app',
             src: [
               'entities/**/*.js',
-              'ui/**/*.js'
+              'ui/**/*.js',
+              'events/**/*.js'
             ],
             dest: 'app/build',
             ext: '.js'
