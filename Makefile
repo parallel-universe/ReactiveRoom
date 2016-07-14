@@ -1,23 +1,20 @@
 all: 
-	grunt build && webpack
+	grunt build -v && webpack -v && start_server
 
-build:
-	grunt build && webpack
+js_build:
+	grunt build -v && webpack -v
 
-watch:
-	grunt build && webpack --watch
+js_watch:
+	grunt build -v && webpack --watch
 
-clean_all:
-	rm -rf node_modules && rm -rf app/build && rm -rf app/vendor
+js_clean_modules:
+	rm -rf node_modules && rm -rf app/vendor
 
-clean_build:
+js_clean_build:
 	rm -rf app/build
 
-install:
-	npm install && bower install && grunt build && webpack
-
-clean_install:
-	rm -rf node_modules && rm -rf app/build && rm -rf app/vendor && npm install && bower install && grunt build && webpack
+js_install:
+	npm install -v && bower install -v && grunt build -v && webpack -v
 
 start_server:
 	cd app && php -S 127.0.0.1:8000

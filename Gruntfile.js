@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
   require("load-grunt-tasks")(grunt);
+  grunt.loadNpmTasks('grunt-nunjucks');
   grunt.loadNpmTasks('grunt-contrib-sass');
 
   // Project configuration.
@@ -19,10 +20,21 @@ module.exports = function(grunt) {
             ext: '.css'
         }]
       }
+    },
+    nunjucks: {
+        precompile: {
+            baseDir: 'app/ui/templates',
+            src: 'app/ui/templates/*',
+            dest: 'app/build/ui/templates.js',
+            options: {
+              asFunction: true
+            }
+        }
     }
   });
 
   // Default task(s).
   grunt.registerTask("default", ["sass"]);
-  grunt.registerTask("build", ["sass"]);
+  grunt.registerTask("build", ["sass", "nunjucks"]);
+  grunt.registerTask("compile", ["nunjucks"]);
 };

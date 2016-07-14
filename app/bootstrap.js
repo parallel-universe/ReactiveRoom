@@ -1,5 +1,6 @@
-// Bootstrap the application
-export default function () {
-    console.log('botstrap');
-}
-import di from 'di';
+import application from 'application.js';
+import testSub from 'testSub.js';
+
+(function() {
+    console.log('bootstrap');
+}());

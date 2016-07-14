@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
     entry: [
         "./app/entities/hardware_node/hardwareNodeCollection.js",
@@ -12,20 +14,44 @@ module.exports = {
         "./app/ui/application.js",
         "./app/ui/views/terminal/terminalView.js",
         "./app/di.js",
-        "./app/bootstrap.js"
+        './app/bootstrap.js'
     ],
     output: {
         path: './app/build',
         filename: "bundle.js"
     },
-    loaders: [
-    {
-      test: /\.js$/,
-      exclude: /(node_modules|bower_components)/,
-      loader: 'babel', // 'babel-loader' is also a legal name to reference
-      query: {
-        presets: ['es2015']
-      }
+    resolve: {
+        root: [
+            path.resolve('./app/ui'),
+            path.resolve('./app/ui/scss'),
+            path.resolve('./app/ui/templates'),
+            path.resolve('./app/ui/views'),
+            path.resolve('./app/ui/views/terminal'),
+            path.resolve('./app/entities/'),
+            path.resolve('./app/entities/hardware_node'),
+            path.resolve('./app/entities/player'),
+            path.resolve('./app/entities/software'),
+            path.resolve('./app/events'),
+            path.resolve('./app/events/subscribers'),
+            path.resolve('./app/events/subscribers/app'),
+            path.resolve('./app/events/subscribers/ui')
+        ],
+        extensions: ['', '.js', '.json'] 
+    },
+    module: {
+        loaders: [
+        {
+          test: /\.js$/,
+          exclude: /(node_modules|bower_components|nunjucks.js|\.njk$)/,
+          loader: 'babel',
+          query: {
+            presets: ['es2015']
+          }
+        },
+        {
+            test: /\.(njk|nunjucks)$/,
+            loader: 'nunjucks-loader'
+        }
+      ]
     }
-  ]
 };

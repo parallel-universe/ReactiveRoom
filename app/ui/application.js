@@ -1,3 +1,5 @@
-// todo
-"use strict";
-//# sourceMappingURL=application.js.map
+const application = function () {
+    console.log('app');
+}
+
+export default application;
