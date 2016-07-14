@@ -1,3 +1,5 @@
 // Bootstrap the application
-"use strict";
-//# sourceMappingURL=bootstrap.js.map
+export default function () {
+    console.log('botstrap');
+}
+import di from 'di';

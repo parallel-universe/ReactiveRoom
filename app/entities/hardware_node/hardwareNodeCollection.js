@@ -1,3 +1,4 @@
 // todo
-"use strict";
-//# sourceMappingURL=hardwareNodeCollection.js.map
+export default function () {
+    console.log('hello, world');
+}
