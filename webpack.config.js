@@ -13,6 +13,7 @@ module.exports = {
         "./app/events/dispatcher.js",
         "./app/ui/application.js",
         "./app/ui/views/terminal/terminalView.js",
+        "./app/backbone.overrides.js",
         "./app/di.js",
         './app/bootstrap.js'
     ],

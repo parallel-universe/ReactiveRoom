@@ -19,13 +19,18 @@ $app->get('/', function () {
   <title>ReactiveRoom</title>
   <meta name="description" content="reactiveRoom">
   <meta name="author" content="reactiveRoom">
+  <script src="vendor/underscore/underscore-min.js"></script>
+  <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/nunjucks/browser/nunjucks-slim.min.js"></script>
+  <script src="vendor/backbone/backbone-min.js"></script>
+  <script src="vendor/backbone.marionette/lib/backbone.marionette.min.js"></script>
 </head>
 
 <body>
+  <div class="js-container"></div>
+
   <script src="build/ui/templates.js"></script>
   <script src="build/bundle.js"></script>
-  <div class="js-container"></div>
 </body>
 </html>';
 });
