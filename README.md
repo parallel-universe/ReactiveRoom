@@ -32,3 +32,25 @@ Run the app:
 ```
 php -S reactive-rooms.dev:8000
 ```
+
+## Frontend install & running
+
+Install local build tools
+```
+npm install
+```
+
+Install front-end libraries
+```
+bower install
+```
+
+run build process and output the latest build
+```
+webpack
+```
+
+run build process and monitor for changes
+```
+webpack --watch
+```
