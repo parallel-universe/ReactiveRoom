@@ -1,0 +1,11 @@
+<?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use ReactiveRoom\Configuration\ApacheConfigCommand;
+use Symfony\Component\Console\Application;
+
+$cli = new Application('ReactiveRoom configuration');
+$cli->setCatchExceptions(true);
+$cli->add(new ApacheConfigCommand);
+
+$cli->run();

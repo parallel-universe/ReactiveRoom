@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+
+    ServerName  {{ vhost.serverName }}
+
+    DocumentRoot {{ directoryPath }}/{{ vhost.directory }}
+
+    <Directory {{ directoryPath }}/{{ vhost.directory }}/>
+        Include {{ directoryPath }}/{{ vhost.directory }}/.htaccess
+    </Directory>
+
+    LogLevel warn
+    ErrorLog {{ logPath }}/errors.{{ vhost.serverName }}
+    CustomLog {{ logPath }}/access.{{ vhost.serverName }} combined
+
+</VirtualHost>
