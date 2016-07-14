@@ -19,5 +19,8 @@ install:
 clean_install:
 	rm -rf node_modules && rm -rf app/build && rm -rf app/vendor && npm install && bower install && grunt build && webpack
 
-run_webserver:
+start_server:
 	cd app && php -S 127.0.0.1:8000
+
+migrate:
+	php bin/database migrations:migrate
