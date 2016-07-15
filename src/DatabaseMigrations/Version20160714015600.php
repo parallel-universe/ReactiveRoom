@@ -9,7 +9,7 @@ class Version20160714015600 extends AbstractMigration
     public function up(Schema $schema)
     {
         $sql = <<<SQL
-CREATE TABLE `user` (
+CREATE TABLE `player` (
   `id` varchar(15) NOT NULL,
   `created` DATETIME NULL,
   `updated` DATETIME NULL,
@@ -68,13 +68,10 @@ CREATE TABLE `terminal` (
   `hardwareId` varchar(15) DEFAULT NULL,
   `softwareId` varchar(15) DEFAULT NULL,
   `networkId` varchar(15) DEFAULT NULL,
-  `userId` varchar(15) DEFAULT NULL,
+  `playerId` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPRESSED KEY_BLOCK_SIZE=8
 SQL;
-        $this->addSql($sql);
-
-        $sql = 'INSERT INTO user (`id`, `username`, `email`) VALUES ("6hKWplv05zVGyCp", "cunt", "matt@basekit.com");';
         $this->addSql($sql);
     }
 
