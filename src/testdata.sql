@@ -1,10 +1,10 @@
-INSERT INTO `player` (`id`, `created`, `updated`, `username`, `email`, `password`)
+INSERT INTO `player` (`id`, `created`, `updated`, `username`, `email`, `password`, `terminalId`)
 VALUES
-    ('6hKWplv05zVGyCp', NULL, NULL, 'player1', 'matt@basekit.com', NULL);
+    ('6hKWplv05zVGyCp', NULL, NULL, 'player1', 'matt@basekit.com', NULL, 'AdewfWfweF');
 
-INSERT INTO `terminal` (`id`, `created`, `updated`, `name`, `ipAddress`, `hardwareId`, `softwareId`, `networkId`, `playerId`)
+INSERT INTO `terminal` (`id`, `created`, `updated`, `name`, `ipAddress`, `hardwareId`, `softwareId`, `networkId`)
 VALUES
-    ('AdewfWfweF', NULL, '2016-07-15 01:09:15', 'terminal', '192.168.0.67', 'htrwffwWfw', 'FWfweFwefwFWG', 'TtwFWew', '6hKWplv05zVGyCp');
+    ('AdewfWfweF', NULL, '2016-07-15 01:09:15', 'terminal', '192.168.0.67', 'htrwffwWfw', 'FWfweFwefwFWG', 'TtwFWew');
 
 INSERT INTO `software` (`id`, `created`, `updated`, `name`, `type`, `level`)
 VALUES
