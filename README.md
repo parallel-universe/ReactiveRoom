@@ -36,11 +36,7 @@ php -S reactive-rooms.dev:8000
 ## Frontend install & running
 
 ```
-make install
-```
-
-Runs webpack and monitors for changes
-
-```
-make watch
+make js_install
+make start_server
+make js_watch
 ```
