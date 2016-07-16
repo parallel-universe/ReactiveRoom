@@ -1,4 +1,3 @@
-import application from 'application.js';
 import TerminalView from 'terminalView.js';
 import playerService from 'playerService.js';
 import testSub from 'testSub.js';

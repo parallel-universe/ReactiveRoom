@@ -1,5 +1,5 @@
 import playerModel from 'playerModel.js';
-import networkCollection from 'networkCollection.js';
+import networkCollection from 'NetworkCollection.js';
 import hardwareCollection from 'hardwareCollection.js';
 import softwareCollection from 'softwareCollection.js';
 
