@@ -1,5 +1,5 @@
 const TerminalView = Backbone.View.extend({
-    template: 'terminal/TerminalView.nunjucks',
+    template: 'terminal/terminalView',
     initialize() {
         console.log('termView');
     },
