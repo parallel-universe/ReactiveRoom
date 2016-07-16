@@ -1,3 +1,2 @@
-// todo
-"use strict";
-//# sourceMappingURL=softwareCollection.js.map
+const SoftwareCollection = Backbone.Collection.extend();
+export default SoftwareCollection;

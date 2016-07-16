@@ -1,3 +1,2 @@
-// todo
-"use strict";
-//# sourceMappingURL=playerCollection.js.map
+const PlayerCollection = Backbone.Collection.extend();
+export default PlayerCollection;

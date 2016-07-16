@@ -1,4 +1,2 @@
-// todo
-export default function () {
-    console.log('hello, world');
-}
+const PlayerModel = Backbone.Model.extend();
+export default PlayerModel;

@@ -1,3 +1,2 @@
-// todo
-"use strict";
-//# sourceMappingURL=softwareModel.js.map
+const SoftwareModel = Backbone.Model.extend();
+export default SoftwareModel;

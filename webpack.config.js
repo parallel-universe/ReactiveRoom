@@ -2,24 +2,11 @@ var path = require('path');
 
 module.exports = {
     entry: [
-        "./app/hardware/hardwareCollection.js",
-        "./app/hardware/hardwareModel.js",
-        "./app/player/playerCollection.js",
-        "./app/player/playerModel.js",
-        "./app/player/playerService.js",
-        "./app/software/softwareCollection.js",
-        "./app/software/softwareModel.js",
-        "./app/events/subscribers/app/testSubscriber.js",
-        "./app/events/subscribers/ui/testSub.js",
-        "./app/events/dispatcher.js",
-        "./app/ui/views/terminal/terminalView.js",
-        "./app/backbone.overrides.js",
-        "./app/di.js",
-        './app/bootstrap.js'
+        './app/bootstrap.js',
     ],
     output: {
         path: './app/build',
-        filename: "bundle.js"
+        filename: 'bundle.js'
     },
     resolve: {
         root: [
@@ -38,7 +25,7 @@ module.exports = {
             path.resolve('./app/events/subscribers/app'),
             path.resolve('./app/events/subscribers/ui')
         ],
-        extensions: ['', '.js', '.json'] 
+        extensions: ['', '.js', '.json']
     },
     module: {
         loaders: [
