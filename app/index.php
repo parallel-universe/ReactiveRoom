@@ -1,11 +1,9 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
-
-$config = file_get_contents(__DIR__ . '/../config.json');
-$config = json_decode($config, true);
 
 $app = new Silex\Application;
 

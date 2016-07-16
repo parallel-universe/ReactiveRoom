@@ -8,6 +8,9 @@
         "doctrine/migrations": "1.0-ALPHA1",
         "symfony/console": "^2.8",
         "symfony/event-dispatcher": "^2.8",
-        "twig/twig": "~1.0"
+        "twig/twig": "~1.0",
+        "symfony/yaml": "2.6.8",
+        "symfony/config": "2.8.8",
+        "symfony/dependency-injection": "2.6.8"
     }
 }

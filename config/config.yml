@@ -1,0 +1,13 @@
+parameters:
+
+    database:
+        dbname: 'reactive_room'
+        user: 'root'
+        password: ''
+        host: 'localhost'
+        port: 3306
+        driver: 'pdo_mysql'
+
+    product:
+        domain: 'reactive-room.dev'
+        name: 'ReactiveRoom'

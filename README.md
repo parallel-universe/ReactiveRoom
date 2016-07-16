@@ -13,10 +13,10 @@ php composer-setup.php --install-dir=/path/to/reactive-room
 php composer.phar install
 ```
 
-Create a config file:
+Optionally create a config file to override defaults:
 
 ```
-cp config.json.dist config.json
+touch config/config_env.yml
 ```
 
 Prepare your database:
