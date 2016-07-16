@@ -1,4 +1,4 @@
-import TerminalView from 'terminalView.js';
+import TerminalView from 'TerminalView.js';
 import playerService from 'playerService.js';
 import testSub from 'testSub.js';
 
@@ -8,5 +8,6 @@ import testSub from 'testSub.js';
         el: '.js-container',
         model: new Backbone.Model({stamp: 'number'})
     });
+    console.log(terminalView);
     terminalView.render();
 }());

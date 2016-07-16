@@ -2,7 +2,8 @@
     _.extend(Backbone.View.prototype,{}, {
         render: function () {
             const data = this.model || {};
-            this.el.innerHTML = nunjucks.render(this.template, data.attributes);
+            const templateName = `app/ui/${this.template}`;
+            this.el.innerHTML = nunjucks.render(templateName, data.attributes);
             return this;
         }
     });

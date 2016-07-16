@@ -24,7 +24,7 @@ module.exports = function(grunt) {
     nunjucks: {
         precompile: {
             baseDir: 'app/ui/templates',
-            src: 'app/ui/templates/*',
+            src: 'app/ui/**/*.nunjucks',
             dest: 'app/build/ui/templates.js',
             options: {
               asFunction: true

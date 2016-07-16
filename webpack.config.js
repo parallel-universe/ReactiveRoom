@@ -2,6 +2,7 @@ var path = require('path');
 
 module.exports = {
     entry: [
+        './app/vendor_overrides/backbone.overrides.js',
         './app/bootstrap.js',
     ],
     output: {
@@ -10,12 +11,10 @@ module.exports = {
     },
     resolve: {
         root: [
-            path.resolve('./app/ui'),
-            path.resolve('./app/ui/scss'),
-            path.resolve('./app/ui/templates'),
-            path.resolve('./app/ui/views'),
-            path.resolve('./app/ui/views/terminal'),
             path.resolve('./app/'),
+            path.resolve('./app/di'),
+            path.resolve('./app/ui'),
+            path.resolve('./app/ui/terminal'),
             path.resolve('./app/hardware'),
             path.resolve('./app/player'),
             path.resolve('./app/software'),
@@ -23,7 +22,8 @@ module.exports = {
             path.resolve('./app/events'),
             path.resolve('./app/events/subscribers'),
             path.resolve('./app/events/subscribers/app'),
-            path.resolve('./app/events/subscribers/ui')
+            path.resolve('./app/events/subscribers/ui'),
+            path.resolve('./app/vendor_overrides'),
         ],
         extensions: ['', '.js', '.json']
     },
@@ -36,10 +36,6 @@ module.exports = {
           query: {
             presets: ['es2015']
           }
-        },
-        {
-            test: /\.(njk|nunjucks)$/,
-            loader: 'nunjucks-loader'
         }
       ]
     }
