@@ -27,6 +27,7 @@ $app->get('/', function () {
   <script src="vendor/nunjucks/browser/nunjucks-slim.min.js"></script>
   <script src="vendor/backbone/backbone-min.js"></script>
   <script src="vendor/backbone.marionette/lib/backbone.marionette.min.js"></script>
+  <script src="vendor/bottlejs/dist/bottle.min.js"></script>
 </head>
 
 <body>

@@ -1,6 +1,6 @@
-import Router from 'Router';
+import di from 'di.js'
 
-(function() {
-    const applicationRouter = new Router({});
+(function(Router) {
+    const applicationRouter = Router;
     Backbone.history.start();
-}());
+}(di.Router));

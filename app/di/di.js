@@ -1,4 +1,7 @@
-//di
-export default function () {
-    console.log('d1');
-}
+import Router from 'Router';
+
+const bottle = new Bottle();
+
+bottle.service('Router', Router);
+
+export default bottle.container;
