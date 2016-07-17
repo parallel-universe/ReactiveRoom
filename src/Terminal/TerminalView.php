@@ -16,19 +16,25 @@ class TerminalView
             'updated' => (null !== $terminal->getUpdated()) ? new DateTime($terminal->getUpdated()) : null,
             'name' => $terminal->getName(),
             'ipAddress' => $terminal->getIpAddress(),
-            'hardware' => null,
-            'software' => null,
+            'hardware' => array(),
+            'software' => array(),
             'network' => null,
         );
 
-        if (null !== ($hardware = $terminal->getHardware())) {
-            $hardwareView = new HardwareView;
-            $view['hardware'] = $hardwareView->render($hardware);
+        $hardware = $terminal->getHardware();
+        if (!empty($hardware)) {
+            foreach ($hardware as $ware) {
+                $hardwareView = new HardwareView;
+                $view['hardware'][] = $hardwareView->render($ware);
+            }
         }
 
-        if (null !== ($software = $terminal->getSoftware())) {
-            $softwareView = new SoftwareView;
-            $view['software'] = $softwareView->render($software);
+        $software = $terminal->getSoftware();
+        if (!empty($software)) {
+            foreach ($software as $ware) {
+                $softwareView = new SoftwareView;
+                $view['software'][] = $softwareView->render($ware);
+            }
         }
 
         if (null !== ($network = $terminal->getNetwork())) {
