@@ -6,6 +6,10 @@ INSERT INTO `terminal` (`id`, `created`, `updated`, `name`, `ipAddress`, `networ
 VALUES
     ('AdewfWfweF', NULL, '2016-07-15 01:09:15', 'terminal', '192.168.0.67', 'TtwFWew');
 
+INSERT INTO `terminal` (`id`, `created`, `updated`, `name`, `ipAddress`, `networkId`)
+VALUES
+    ('FDGHhxdGCGfdfLP', '2016-07-15 01:09:15', 'second-terminal', '192.168.0.94', 'TtwFWew');
+
 INSERT INTO `software` (`id`, `created`, `updated`, `name`, `type`, `level`)
 VALUES
     ('FWfweFwefwFWG', NULL, '2016-07-15 01:07:43', 'password cracker', 'executable', 1);

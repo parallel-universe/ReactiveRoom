@@ -18,6 +18,12 @@ services:
             - '@db_conn'
             - '@model_mapper'
 
+    terminal_repository:
+        class: ReactiveRoom\Terminal\TerminalRepository
+        arguments:
+            - '@db_conn'
+            - '@model_mapper'
+
     twig_loader:
         factory_class: ReactiveRoom\TwigLoaderFactory
         factory_method: create

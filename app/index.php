@@ -5,6 +5,7 @@ require __DIR__ . '/../bootstrap.php';
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
 use ReactiveRoom\Player\PlayerView;
+use ReactiveRoom\Terminal\TerminalMetadataView;
 
 $app = new Silex\Application;
 
@@ -14,8 +15,20 @@ $app->get('/', function () use ($container) {
     $playerRepository = $container->get('player_repository');
     $result = $playerRepository->findByUsername($username);
 
+    $terminalRepository = $container->get('terminal_repository');
+    $terminals = $terminalRepository->findAllWithNetwork(
+        $result->getTerminal()->getNetwork()->getId()
+    );
+
     $playerView = new PlayerView;
     $player = $playerView->render($result);
+
+    $player['terminal']['network']['terminals'] = array();
+
+    $terminalMetadataView = new TerminalMetadataView;
+    foreach ($terminals as $terminal) {
+        $player['terminal']['network']['terminals'][] = $terminalMetadataView->render($terminal);
+    }
 
     return '<!doctype html>
 

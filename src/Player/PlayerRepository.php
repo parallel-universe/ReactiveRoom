@@ -30,6 +30,7 @@ class PlayerRepository
             'player.username AS `player.username`',
             'player.email AS `player.email`',
             'player.terminalId AS `player.terminalId`',
+            'terminal.id AS `terminal.id`',
             'terminal.created AS `terminal.created`',
             'terminal.updated AS `terminal.updated`',
             'terminal.name AS `terminal.name`',
