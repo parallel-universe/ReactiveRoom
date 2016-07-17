@@ -1,14 +1,12 @@
 module.exports = function(grunt) {
     require("load-grunt-tasks")(grunt);
-    grunt.loadNpmTasks('grunt-nunjucks');
-    grunt.loadNpmTasks('grunt-contrib-sass');
 
     // Project configuration.
     grunt.initConfig({
         watch: {
             styles: {
                 files: ['variables.scss', '**/*.scss'],
-                tasks: ["concat", "sass"],
+                tasks: ["sass"],
                 options: {
                     spawn: false,
                 },
