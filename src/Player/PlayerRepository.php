@@ -30,12 +30,11 @@ class PlayerRepository
             'player.username AS `player.username`',
             'player.email AS `player.email`',
             'player.terminalId AS `player.terminalId`',
+            'terminal.id AS `terminal.id`',
             'terminal.created AS `terminal.created`',
             'terminal.updated AS `terminal.updated`',
             'terminal.name AS `terminal.name`',
             'terminal.ipAddress AS `terminal.ipAddress`',
-            'terminal.hardwareId AS `terminal.hardwareId`',
-            'terminal.softwareId AS `terminal.softwareId`',
             'terminal.networkId AS `terminal.networkId`',
             'hardware.id AS `hardware.id`',
             'hardware.created AS `hardware.created`',
@@ -59,22 +58,42 @@ class PlayerRepository
         $qb->select($fields)
             ->from('player', 'player')
             ->innerJoin('player', 'terminal', 'terminal', 'terminal.id = player.terminalId')
-            ->innerJoin('terminal', 'hardware', 'hardware', 'hardware.id = terminal.hardwareId')
-            ->innerJoin('terminal', 'software', 'software', 'software.id = terminal.softwareId')
             ->innerJoin('terminal', 'network', 'network', 'network.id = terminal.networkId')
+            ->leftJoin('terminal', 'terminal_to_hardware_map', 'terminal_hardware_map', 'terminal_hardware_map.terminalId = terminal.id')
+            ->leftJoin('terminal_hardware_map', 'hardware', 'hardware', 'terminal_hardware_map.hardwareId = hardware.id')
+            ->leftJoin('terminal', 'terminal_to_software_map', 'terminal_software_map', 'terminal_software_map.terminalId = terminal.id')
+            ->leftJoin('terminal_software_map', 'software', 'software', 'terminal_software_map.softwareId = software.id')
             ->where('player.username = :username')
             ->setParameter(':username', $username);
 
         $stmt = $qb->execute();
-        $result = $stmt->fetch();
+        $result = $stmt->fetchAll();
 
         $entityFields = array();
-        foreach ($result as $key => $value) {
-            list($entity, $field) = explode('.', $key);
-            if (!isset($entityFields[$entity])) {
-                $entityFields[$entity] = array();
+        foreach ($result as $row) {
+            foreach ($row as $key => $value) {
+                list($entity, $field) = explode('.', $key);
+                if (!isset($entityFields[$entity])) {
+                    $entityFields[$entity] = array();
+                }
+                if (in_array($entity, array('software', 'hardware'))) {
+                    $entityId = $row[$entity . '.id'];
+                    if (null !== $entityId && !isset($entityFields[$entity][$entityId])) {
+                        $entityFields[$entity][$entityId] = array();
+                    }
+                    $entityFields[$entity][$entityId][$field] = $value;
+                    continue;
+                }
+                $entityFields[$entity][$field] = $value;
             }
-            $entityFields[$entity][$field] = $value;
+        }
+
+        if (!empty($entityFields['software'])) {
+            $entityFields['software'] = array_values($entityFields['software']);
+        }
+
+        if (!empty($entityFields['hardware'])) {
+            $entityFields['hardware'] = array_values($entityFields['hardware']);
         }
 
         $terminal = new TerminalModel;
@@ -84,13 +103,17 @@ class PlayerRepository
         $this->modelMapper->map($network, $entityFields['network']);
         $terminal->setNetwork($network);
 
-        $hardware = new HardwareModel;
-        $this->modelMapper->map($hardware, $entityFields['hardware']);
-        $terminal->setHardware($hardware);
+        foreach ($entityFields['hardware'] as $ware) {
+            $hardware = new HardwareModel;
+            $this->modelMapper->map($hardware, $ware);
+            $terminal->addHardware($hardware);
+        }
 
-        $software = new SoftwareModel;
-        $this->modelMapper->map($software, $entityFields['software']);
-        $terminal->setSoftware($software);
+        foreach ($entityFields['software'] as $ware) {
+            $software = new SoftwareModel;
+            $this->modelMapper->map($software, $ware);
+            $terminal->addSoftware($software);
+        }
 
         $player = new PlayerModel;
         $this->modelMapper->map($player, $entityFields['player']);

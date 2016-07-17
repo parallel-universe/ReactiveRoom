@@ -12,10 +12,8 @@ class TerminalModel
     private $updated;
     private $name;
     private $ipAddress;
-    private $hardwareId;
-    private $hardware;
-    private $softwareId;
-    private $software;
+    private $hardware = array();
+    private $software = array();
     private $networkId;
     private $network;
 
@@ -69,20 +67,9 @@ class TerminalModel
         return $this->ipAddress;
     }
 
-    public function setHardwareId($hardwareId)
+    public function addHardware(HardwareModel $hardware)
     {
-        $this->hardwareId = $hardwareId;
-    }
-
-    public function getHardwareId()
-    {
-        return $this->hardwareId;
-    }
-
-    public function setHardware(HardwareModel $hardware)
-    {
-        $this->hardware = $hardware;
-        $this->setHardwareId($hardware->getId());
+        $this->hardware[] = $hardware;
     }
 
     public function getHardware()
@@ -90,20 +77,9 @@ class TerminalModel
         return $this->hardware;
     }
 
-    public function setSoftwareId($softwareId)
+    public function addSoftware(SoftwareModel $software)
     {
-        $this->softwareId = $softwareId;
-    }
-
-    public function getSoftwareId()
-    {
-        return $this->softwareId;
-    }
-
-    public function setSoftware(SoftwareModel $software)
-    {
-        $this->software = $software;
-        $this->setSoftwareId($software->getId());
+        $this->software[] = $software;
     }
 
     public function getSoftware()
