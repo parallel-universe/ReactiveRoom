@@ -6,3 +6,4 @@ app/.DS_Store
 node_modules
 .sass-cache
 config.json
+config/config_env.yml

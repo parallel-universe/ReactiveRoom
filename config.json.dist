@@ -1,9 +1,0 @@
-{
-    "database": {
-        "name": "reactive_room",
-        "user": "root",
-        "password": "",
-        "host": "localhost",
-        "port": "3306"
-    }
-}

@@ -1,0 +1,34 @@
+imports:
+    - { resource: ../config.yml }
+    - { resource: ../config_env.yml, ignore_errors: true }
+
+services:
+
+    db_conn:
+        factory_class: Doctrine\DBAL\DriverManager
+        factory_method: getConnection
+        arguments: ['%database%']
+
+    model_mapper:
+        class: ReactiveRoom\ModelMapper
+
+    player_repository:
+        class: ReactiveRoom\Player\PlayerRepository
+        arguments:
+            - '@db_conn'
+            - '@model_mapper'
+
+    twig_loader:
+        factory_class: ReactiveRoom\TwigLoaderFactory
+        factory_method: create
+
+    twig:
+        class: Twig_Environment
+        arguments:
+            - '@twig_loader'
+
+    apache_config_generator:
+        class: ReactiveRoom\Configuration\ApacheConfigGenerator
+        arguments:
+            - '@twig'
+            - '%product_domain%'

@@ -1,0 +1,13 @@
+parameters:
+
+    database:
+        dbname: 'reactive_room'
+        user: 'root'
+        password: ''
+        host: 'localhost'
+        port: 3306
+        driver: 'pdo_mysql'
+
+    product_domain: 'reactive-room.dev'
+
+    twig_file_path: '/'

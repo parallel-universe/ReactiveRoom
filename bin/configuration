@@ -1,11 +1,12 @@
 <?php
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 use ReactiveRoom\Configuration\ApacheConfigCommand;
 use Symfony\Component\Console\Application;
 
 $cli = new Application('ReactiveRoom configuration');
 $cli->setCatchExceptions(true);
-$cli->add(new ApacheConfigCommand);
+$cli->add(new ApacheConfigCommand($container->get('apache_config_generator')));
 
 $cli->run();
