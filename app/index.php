@@ -28,9 +28,11 @@ $app->get('/', function () use ($container) {
   <meta name="author" content="reactiveRoom">
 
   <link rel="stylesheet" type="text/css" href="build/styles.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="vendor/jquery.terminal/css/jquery.terminal.min.css" media="screen" />
 
   <script src="vendor/underscore/underscore-min.js"></script>
   <script src="vendor/jquery/dist/jquery.min.js"></script>
+  <script src="vendor/jquery.terminal/js/jquery.terminal.min.js"></script>
   <script src="vendor/nunjucks/browser/nunjucks-slim.min.js"></script>
   <script src="vendor/backbone/backbone-min.js"></script>
   <script src="vendor/backbone.marionette/lib/backbone.marionette.min.js"></script>

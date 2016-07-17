@@ -1,7 +1,6 @@
 module.exports = function(grunt) {
     require("load-grunt-tasks")(grunt);
 
-    // Project configuration.
     grunt.initConfig({
         watch: {
             styles: {
@@ -45,7 +44,6 @@ module.exports = function(grunt) {
     }
   });
 
-    // Default task(s).
     grunt.registerTask("default", ["sass"]);
     grunt.registerTask("build", ["sass", "nunjucks"]);
     grunt.registerTask("compile", ["nunjucks"]);

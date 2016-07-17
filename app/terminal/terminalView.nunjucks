@@ -1,3 +1,1 @@
-<div>TerminalView</div>
-<p>123{{id}}</p>
-<p>{{name}}</p>
+<div id="terminal"></div>

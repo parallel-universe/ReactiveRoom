@@ -3,6 +3,7 @@ var path = require('path');
 module.exports = {
     entry: [
         './app/vendor_overrides/backbone.overrides.js',
+        './app/vendor_overrides/marionette.rerender.js',
         './app/bootstrap.js',
     ],
     output: {
