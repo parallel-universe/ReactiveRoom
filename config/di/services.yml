@@ -17,3 +17,18 @@ services:
         arguments:
             - '@db_conn'
             - '@model_mapper'
+
+    twig_loader:
+        factory_class: ReactiveRoom\TwigLoaderFactory
+        factory_method: create
+
+    twig:
+        class: Twig_Environment
+        arguments:
+            - '@twig_loader'
+
+    apache_config_generator:
+        class: ReactiveRoom\Configuration\ApacheConfigGenerator
+        arguments:
+            - '@twig'
+            - '%product_domain%'

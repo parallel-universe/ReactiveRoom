@@ -8,6 +8,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ApacheConfigCommand extends Command
 {
+    private $configGenerator;
+
+    public function __construct(
+        ApacheConfigGenerator $configGenerator
+    ) {
+        $this->configGenerator = $configGenerator;
+        parent::__construct();
+    }
+
     public function configure()
     {
         $this->setName('generate-apache-config');
@@ -17,14 +26,7 @@ class ApacheConfigCommand extends Command
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
-        $config = file_get_contents(__DIR__ . '/../../config.json');
-        $config = json_decode($config, true);
-
-        $loader = new \Twig_Loader_Filesystem(__DIR__ . '/../../');
-        $twig = new \Twig_Environment($loader);
-
-        $apacheConfigGenerator = new ApacheConfigGenerator($twig, $config);
-        $apacheConfigGenerator->generate(
+        $this->configGenerator->generate(
             realpath(__DIR__ . '/../../'),
             $input->getArgument('logPath'),
             $input->getArgument('outputDir')

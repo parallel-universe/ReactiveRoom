@@ -4,25 +4,25 @@ namespace ReactiveRoom\Configuration;
 class ApacheConfigGenerator
 {
     private $twig;
-    private $config;
+    private $productDomain;
 
     public function __construct(
         \Twig_Environment $twig,
-        $config
+        $productDomain
     ) {
         $this->twig = $twig;
-        $this->config = $config;
+        $this->productDomain = $productDomain;
     }
 
     public function generate($directoryPath, $logPath, $outputPath)
     {
         $vhosts = array(
             array(
-                'serverName' => 'api.' . $this->config['product']['domain'],
+                'serverName' => 'api.' . $this->productDomain,
                 'directory' => 'api/public',
             ),
             array(
-                'serverName' => $this->config['product']['domain'],
+                'serverName' => $this->productDomain,
                 'directory' => 'app',
             ),
         );
