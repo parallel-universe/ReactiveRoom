@@ -2,10 +2,10 @@ all:
 	grunt build -v && webpack -v && start_server
 
 js_build:
-	grunt build -v && webpack -v
+	rm -rf app/build && grunt build -v && webpack -v
 
 js_watch:
-	grunt build -v && webpack --watch
+	rm -rf app/build && grunt build -v && webpack --watch & grunt watch:styles & grunt watch:templates
 
 js_clean_modules:
 	rm -rf node_modules && rm -rf app/vendor

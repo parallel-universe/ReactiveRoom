@@ -19,6 +19,9 @@ $app->get('/', function () {
   <title>ReactiveRoom</title>
   <meta name="description" content="reactiveRoom">
   <meta name="author" content="reactiveRoom">
+
+  <link rel="stylesheet" type="text/css" href="build/styles.css" media="screen" />
+
   <script src="vendor/underscore/underscore-min.js"></script>
   <script src="vendor/jquery/dist/jquery.min.js"></script>
   <script src="vendor/nunjucks/browser/nunjucks-slim.min.js"></script>
@@ -29,8 +32,8 @@ $app->get('/', function () {
 <body>
   <div class="js-container"></div>
 
-  <script src="build/ui/templates.js"></script>
-  <script src="build/bundle.js"></script>
+  <script src="build/templates.js"></script>
+  <script src="build/scripts.js"></script>
 </body>
 </html>';
 });
