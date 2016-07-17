@@ -1,5 +1,5 @@
 <div class="js-index">
-    <div class="js-content">
+    <div id="content" class="js-content">
     </div>
 </div>
 

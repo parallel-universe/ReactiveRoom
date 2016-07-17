@@ -22,6 +22,7 @@ module.exports = {
             path.resolve('./app/router'),
             path.resolve('./app/events'),
             path.resolve('./app/index'),
+            path.resolve('./app/region_manager'),
             path.resolve('./app/events/subscribers'),
             path.resolve('./app/events/subscribers/app'),
             path.resolve('./app/events/subscribers/ui'),

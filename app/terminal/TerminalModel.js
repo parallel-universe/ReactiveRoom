@@ -1,2 +1,2 @@
-const TerminalModel = Backbone.Model.extend({});
+const TerminalModel = Backbone.Model.extend();
 export default TerminalModel;
