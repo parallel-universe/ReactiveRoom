@@ -1,12 +1,12 @@
-import TerminalRepository from 'TerminalRepository.js';
+import di from 'di';
 
 export default Backbone.Router.extend({
     routes: {
         '': 'index',
     },
     index() {
-        const terminalView = TerminalRepository.create();
-        terminalView.setElement('.js-container');
-        terminalView.render();
+        const indexView = di.IndexView;
+        indexView.setElement('.js-container');
+        indexView.render();
     }
 });

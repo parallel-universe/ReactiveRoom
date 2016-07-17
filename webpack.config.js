@@ -20,6 +20,7 @@ module.exports = {
             path.resolve('./app/network'),
             path.resolve('./app/router'),
             path.resolve('./app/events'),
+            path.resolve('./app/index'),
             path.resolve('./app/events/subscribers'),
             path.resolve('./app/events/subscribers/app'),
             path.resolve('./app/events/subscribers/ui'),

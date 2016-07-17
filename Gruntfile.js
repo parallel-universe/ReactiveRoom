@@ -7,7 +7,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         watch: {
             styles: {
-                files: ['**/*.scss'],
+                files: ['variables.scss', '**/*.scss'],
                 tasks: ["concat", "sass"],
                 options: {
                     spawn: false,
@@ -21,14 +21,6 @@ module.exports = function(grunt) {
                 },
             },
         },
-    concat: {
-        dist: {
-            src: [
-                '**/*.scss',
-            ],
-            dest: 'app/build/styles.scss',
-        }
-    },
     sass: {
         dist: {
             options: {
@@ -36,7 +28,7 @@ module.exports = function(grunt) {
             },
             files: [{
                 expand: true,
-                cwd: 'app/build',
+                cwd: 'app',
                 src: 'styles.scss',
                 dest: 'app/build',
                 ext: '.css',
@@ -57,6 +49,6 @@ module.exports = function(grunt) {
 
     // Default task(s).
     grunt.registerTask("default", ["sass"]);
-    grunt.registerTask("build", ["concat", "sass", "nunjucks"]);
+    grunt.registerTask("build", ["sass", "nunjucks"]);
     grunt.registerTask("compile", ["nunjucks"]);
 };
