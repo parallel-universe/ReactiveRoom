@@ -8,3 +8,12 @@ services:
         factory_class: Doctrine\DBAL\DriverManager
         factory_method: getConnection
         arguments: ['%database%']
+
+    model_mapper:
+        class: ReactiveRoom\ModelMapper
+
+    player_repository:
+        class: ReactiveRoom\Player\PlayerRepository
+        arguments:
+            - '@db_conn'
+            - '@model_mapper'

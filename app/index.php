@@ -4,10 +4,19 @@ require __DIR__ . '/../bootstrap.php';
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DriverManager;
+use ReactiveRoom\Player\PlayerView;
 
 $app = new Silex\Application;
 
-$app->get('/', function () {
+$app->get('/', function () use ($container) {
+    $username = 'player1';
+
+    $playerRepository = $container->get('player_repository');
+    $result = $playerRepository->findByUsername($username);
+
+    $playerView = new PlayerView;
+    $player = $playerView->render($result);
+
     return '<!doctype html>
 
 <html lang="en">
@@ -27,6 +36,9 @@ $app->get('/', function () {
 <body>
   <div class="js-container"></div>
 
+  <script>
+    var player = ' . json_encode($player) . ';
+  </script>
   <script src="build/ui/templates.js"></script>
   <script src="build/bundle.js"></script>
 </body>
