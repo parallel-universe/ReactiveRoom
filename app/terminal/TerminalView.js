@@ -1,13 +1,17 @@
 const TerminalView = Marionette.ItemView.extend({
     template: 'terminal/terminalView',
     className: 'terminal',
+    initialize(options) {
+        this.di = options.di;
+        console.log(this.di);
+    },
     onShow() {
         this.initializeTerminal();
     },
     initializeTerminal() {
-        $('.terminal').terminal(function (command, terminal) {
-            terminal.echo(`you typed: ${command}!`);
-        }, {prompt: '> ', name: 'test'});
+        this.terminal = $('.terminal').terminal(this.di.HelloWorldApp.getInterpreter(), {
+            prompt: '> ', name: 'test'
+        });
     }
 });
 

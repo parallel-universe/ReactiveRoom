@@ -3,10 +3,12 @@ const IndexView = Marionette.CompositeView.extend({
     initialize(options) {
         this.views = options.di.views;
         this.regionManager = new options.di.regionManager();
+        this.playerDataProvider = options.di.playerDataProvider;
     },
     onRender() {
         this.createRegions();
         this.renderViews();
+        console.log(this.playerDataProvider());
     },
     createRegions() {
         this.regionManager.addRegion('content', '.js-content');

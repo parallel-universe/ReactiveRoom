@@ -1,8 +1,8 @@
+import PlayerModel from 'PlayerModel';
+
 const playerDataProvider = function () {
-    return {
-        name: 'hey',
-        id: 'something'
-    };
+    const player = window.player;
+    return new PlayerModel(player);
 }
 
-export default playerDataProvider();
+export default playerDataProvider;
