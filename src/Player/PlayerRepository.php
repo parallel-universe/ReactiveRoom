@@ -59,10 +59,30 @@ class PlayerRepository
             ->from('player', 'player')
             ->innerJoin('player', 'terminal', 'terminal', 'terminal.id = player.terminalId')
             ->innerJoin('terminal', 'network', 'network', 'network.id = terminal.networkId')
-            ->leftJoin('terminal', 'terminal_to_hardware_map', 'terminal_hardware_map', 'terminal_hardware_map.terminalId = terminal.id')
-            ->leftJoin('terminal_hardware_map', 'hardware', 'hardware', 'terminal_hardware_map.hardwareId = hardware.id')
-            ->leftJoin('terminal', 'terminal_to_software_map', 'terminal_software_map', 'terminal_software_map.terminalId = terminal.id')
-            ->leftJoin('terminal_software_map', 'software', 'software', 'terminal_software_map.softwareId = software.id')
+            ->leftJoin(
+                'terminal',
+                'terminal_to_hardware_map',
+                'terminal_hardware_map',
+                'terminal_hardware_map.terminalId = terminal.id'
+            )
+            ->leftJoin(
+                'terminal_hardware_map',
+                'hardware',
+                'hardware',
+                'terminal_hardware_map.hardwareId = hardware.id'
+            )
+            ->leftJoin(
+                'terminal',
+                'terminal_to_software_map',
+                'terminal_software_map',
+                'terminal_software_map.terminalId = terminal.id'
+            )
+            ->leftJoin(
+                'terminal_software_map',
+                'software',
+                'software',
+                'terminal_software_map.softwareId = software.id'
+            )
             ->where('player.username = :username')
             ->setParameter(':username', $username);
 
