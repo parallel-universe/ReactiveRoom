@@ -21,3 +21,6 @@ start_server:
 
 migrate:
 	php bin/database migrations:migrate
+
+phpcs:
+	./vendor/bin/phpcs -p --standard=resources/phpcs-ruleset.xml --error-severity=1 --encoding=utf-8 src/

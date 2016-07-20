@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ruleset name="ReactiveRoom Standard">
+    <description>ReactiveRoom’s coding standards</description>
+
+    <rule ref="PSR2"/>
+
+    <rule ref="Generic.Files.LineLength">
+        <exclude-pattern>src/DatabaseMigrations/Version*.php</exclude-pattern>
+    </rule>
+
+</ruleset>
